@@ -1,21 +1,18 @@
-package com.cptFranck.database.domain;
+package com.cptFranck.database.domain.entity;
 
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity
+@Entity(name = "Book")
 @Table(name = "books")
-public class Book {
+public class BookEntity {
 
     @Id
     private String isbn;
@@ -24,6 +21,6 @@ public class Book {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "author_id")
-    private Author author;
+    private AuthorEntity authorEntity;
 
 }
